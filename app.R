@@ -13,7 +13,7 @@ library(shinyjs)
 ui <- fluidPage(
   # includeCSS("styles.css"),
   
-  headerPanel(h1("LIVE iHealth Tracker", align = "center")),
+  headerPanel(h1("Live Health tracker", align = "center")),
   br(),
   div(h5("Click the items on the right to activate or deactivate"), align = "center"),
   div(h6("Live data is streamed from http://ihealth.sepdek.net/"), align = "center"),
