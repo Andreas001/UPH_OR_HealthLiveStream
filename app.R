@@ -1,25 +1,32 @@
+#install necessary libraries if not currently installed yet
+#install.packages("shiny")
+#install.packages("plotly")
+#install.packages("shinyjs)
+
+#load the necessary libraries
 library(shiny)
 library(plotly)
 library(shinyjs)
-#UI FILE------------------
-ui <- fluidPage(
-  # includeCSS("styles.css"),
-  
-  headerPanel(h1("LIVE iHealth Tracker - James Adhitthana", align = "center")),
+
+#UI
+ui <- fluidPage
+(
+  #Sets up the UI for interactables
+  headerPanel(h1("Health tracker", align = "center")),
   br(),
-  div(h5("Click on the right side of the table to enable/disable viewing a sensor's graph"), align = "center"),
-  div(h6("Live data is streamed from http://ihealth.sepdek.net/"), align = "center"),
+  #Writes down description
+  div(h5("Click the items on the right to active/deactivate the items in the table"), align = "center"),
   br(),
   div(plotlyOutput("plot"), id='graph'),
   useShinyjs()
 )
-#//------------//
 
-#SERVER FILE------------------
-server <- function(input, output, session) {
+#Server
+server <- function(input, output, session) 
+{
   library(jsonlite)
   jsSepdek = fromJSON("http://ihealth.sepdek.net/")
-  jamesHealth <- as.data.frame(jsSepdek)
+  health <- as.data.frame(jsSepdek)
   
   values <- reactiveValues()
   
@@ -28,150 +35,136 @@ server <- function(input, output, session) {
     mode = 'lines'
   ) %>%
     
-    #Row 1:
+    #Airflow
     add_trace(
-      name = jamesHealth$healthData.sensor[1],
-      y = c(jamesHealth$healthData.value[1]),
+      name = health$healthData.sensor[1],
+      y = c(health$healthData.value[1]),
       line = list(
         color = '#266dd3',
         width = 3
       )
     ) %>%
-    #-----------
 
-    #Row 2:
+    #Body temperature
     add_trace(
-      name = jamesHealth$healthData.sensor[2],
-      y = c(jamesHealth$healthData.value[2]),
+      name = health$healthData.sensor[2],
+      y = c(health$healthData.value[2]),
       line = list(
         color = '#344055',
         width = 3
       )
     ) %>%
-    #-----------
   
-    #Row 3:
+    #ECG
     add_trace(
-    name = jamesHealth$healthData.sensor[3],
-    y = c(jamesHealth$healthData.value[3]),
+    name = health$healthData.sensor[3],
+    y = c(health$healthData.value[3]),
     line = list(
       color = '#888098',
       width = 3
     )
   ) %>%
-    #-----------
   
-  #Row 4:
+  #Oxygen saturation
   add_trace(
-    name = jamesHealth$healthData.sensor[4],
-    y = c(jamesHealth$healthData.value[4]),
+    name = health$healthData.sensor[4],
+    y = c(health$healthData.value[4]),
     line = list(
       color = '#cfb3cd',
       width = 3
     )
   ) %>%
-    #-----------
   
-  #Row 5:
+  #Heart rate
   add_trace(
-    name = jamesHealth$healthData.sensor[5],
-    y = c(jamesHealth$healthData.value[5]),
+    name = health$healthData.sensor[5],
+    y = c(health$healthData.value[5]),
     line = list(
       color = '#cfb3cd',
       width = 3
     )
   ) %>%
-    #-----------
   
-  
-  #Row 6:
+  #Systolic pressure
   add_trace(
-    name = jamesHealth$healthData.sensor[6],
-    y = c(jamesHealth$healthData.value[6]),
+    name = health$healthData.sensor[6],
+    y = c(health$healthData.value[6]),
     line = list(
       color = '#00bfb2',
       width = 3
     )
   ) %>%
-    #-----------
   
-  
-  #Row 7:
+  #Diastolic pressure
   add_trace(
-    name = jamesHealth$healthData.sensor[7],
-    y = c(jamesHealth$healthData.value[7]),
+    name = health$healthData.sensor[7],
+    y = c(health$healthData.value[7]),
     line = list(
       color = '#1a5e63',
       width = 3
     )
   ) %>%
-    #-----------
   
-  #Row 8:
+  #Pulse
   add_trace(
-    name = jamesHealth$healthData.sensor[8],
-    y = c(jamesHealth$healthData.value[8]),
+    name = health$healthData.sensor[8],
+    y = c(health$healthData.value[8]),
     line = list(
       color = '#028090',
       width = 3
     )
   ) %>%
-    #-----------
   
-  #Row 9:
+  #EMG
   add_trace(
-    name = jamesHealth$healthData.sensor[9],
-    y = c(jamesHealth$healthData.value[9]),
+    name = health$healthData.sensor[9],
+    y = c(health$healthData.value[9]),
     line = list(
       color = '#f0f3bd',
       width = 3
     )
   ) %>%
-    #-----------
   
-  #Row 10:
+  #Skin conductance
   add_trace(
-    name = jamesHealth$healthData.sensor[10],
-    y = c(jamesHealth$healthData.value[10]),
+    name = health$healthData.sensor[10],
+    y = c(health$healthData.value[10]),
     line = list(
       color = '#c64191',
       width = 3
     )
   ) %>%
-    #-----------
   
-  #Row 11:
+  #Skin resistance
   add_trace(
-    name = jamesHealth$healthData.sensor[11],
-    y = c(jamesHealth$healthData.value[11]),
+    name = health$healthData.sensor[11],
+    y = c(health$healthData.value[11]),
     line = list(
       color = '#d0db97',
       width = 3
     )
   ) %>%
-    #-----------
   
-  #Row 12:
+  #Skin conductance voltage
   add_trace(
-    name = jamesHealth$healthData.sensor[12],
-    y = c(jamesHealth$healthData.value[12]),
+    name = health$healthData.sensor[12],
+    y = c(health$healthData.value[12]),
     line = list(
       color = '#69b578',
       width = 3
     )
   ) %>%
-    #-----------
   
-  #Row 13:
+  #Glycose level
   add_trace(
-    name = jamesHealth$healthData.sensor[13],
-    y = c(jamesHealth$healthData.value[13]),
+    name = health$healthData.sensor[13],
+    y = c(health$healthData.value[13]),
     line = list(
       color = '#3a7d44',
       width = 3
     )
   ) %>%
-    #-----------
+
     layout(
       yaxis = list(title = "Sensors"),
       xaxis = list(title = "Seconds Passed")
@@ -185,19 +178,21 @@ server <- function(input, output, session) {
     
     
     plotlyProxy("plot", session) %>%
-      plotlyProxyInvoke("extendTraces", list(y=list(list(jamesHealth$healthData.value[1]), #Row 1
-                                                    list(jamesHealth$healthData.value[2]), #Row 2
-                                                    list(jamesHealth$healthData.value[3]), #Row 3
-                                                    list(jamesHealth$healthData.value[4]), #Row 4
-                                                    list(jamesHealth$healthData.value[5]), #Row 5
-                                                    list(jamesHealth$healthData.value[6]), #Row 6
-                                                    list(jamesHealth$healthData.value[7]), #Row 7
-                                                    list(jamesHealth$healthData.value[8]), #Row 8
-                                                    list(jamesHealth$healthData.value[9]), #Row 9
-                                                    list(jamesHealth$healthData.value[10]), #Row 10
-                                                    list(jamesHealth$healthData.value[11]), #Row 11
-                                                    list(jamesHealth$healthData.value[12]), #Row 12
-                                                    list(jamesHealth$healthData.value[13])  )),list(1,2,3,4,5,6,7,8,9,10,11,12,13))
+      plotlyProxyInvoke("extendTraces", list(y=list(list(health$healthData.value[1]), #Airflow
+                                                    list(health$healthData.value[2]), #Body temperature
+                                                    list(health$healthData.value[3]), #ECG
+                                                    list(health$healthData.value[4]), #Oxygen saturation
+                                                    list(health$healthData.value[5]), #Heart rate
+                                                    list(health$healthData.value[6]), #Systolic pressure
+                                                    list(health$healthData.value[7]), #Diastolic pressure
+                                                    list(health$healthData.value[8]), #Pulse
+                                                    list(health$healthData.value[9]), #EMG
+                                                    list(health$healthData.value[10]), #Skin conductance
+                                                    list(health$healthData.value[11]), #Skin resistance
+                                                    list(health$healthData.value[12]), #Skin conductance voltage
+                                                    list(health$healthData.value[13])  #Glycose level
+                                                    )),
+                                                    list(1,2,3,4,5,6,7,8,9,10,11,12,13))
   })
   
 }
