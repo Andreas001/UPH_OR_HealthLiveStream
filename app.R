@@ -12,9 +12,9 @@ library(shinyjs)
 ui <- fluidPage
 (
   #Sets up the UI for interactables
+  #Writes down description
   headerPanel(h1("Health tracker", align = "center")),
   br(),
-  #Writes down description
   div(h5("Click the items on the right to active/deactivate the items in the table"), align = "center"),
   div(h6("Live data streamed from URL : http://ihealth.sepdek.net/"), align = "center"),
   br(),
