@@ -175,7 +175,7 @@ server <- function(input, output, session)
   observe({
     invalidateLater(1000, session)
     jsSepdek = fromJSON("http://ihealth.sepdek.net/")
-    jamesHealth <- as.data.frame(jsSepdek)
+    health <- as.data.frame(jsSepdek)
     
     
     plotlyProxy("plot", session) %>%
