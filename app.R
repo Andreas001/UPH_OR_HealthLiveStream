@@ -11,6 +11,7 @@ library(shinyjs)
 #UI
 ui <- fluidPage
 (
+  # includeCSS("styles.css"),
   #Sets up the UI for interactables
   #Writes down description
   headerPanel(h1("Health tracker", align = "center")),
