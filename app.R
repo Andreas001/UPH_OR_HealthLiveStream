@@ -16,6 +16,7 @@ ui <- fluidPage
   br(),
   #Writes down description
   div(h5("Click the items on the right to active/deactivate the items in the table"), align = "center"),
+  div(h6("Live data streamed from URL : http://ihealth.sepdek.net/"), align = "center"),
   br(),
   div(plotlyOutput("plot"), id='graph'),
   useShinyjs()
