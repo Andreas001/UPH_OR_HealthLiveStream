@@ -9,11 +9,10 @@ library(plotly)
 library(shinyjs)
 
 #UI
+#Sets up descriptions
 ui <- fluidPage
 (
   # includeCSS("styles.css"),
-  #Sets up the UI for interactables
-  #Writes down description
   headerPanel(h1("Health tracker", align = "center")),
   br(),
   div(h5("Click the items on the right to active/deactivate the items in the table"), align = "center"),
