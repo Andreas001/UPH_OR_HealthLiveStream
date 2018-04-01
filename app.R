@@ -10,13 +10,13 @@ library(shinyjs)
 
 #UI
 #Sets up descriptions
-ui <- fluidPage
-(
+ui <- fluidPage(
   # includeCSS("styles.css"),
-  headerPanel(h1("Health tracker", align = "center")),
+  
+  headerPanel(h1("LIVE iHealth Tracker", align = "center")),
   br(),
-  div(h5("Click the items on the right to active/deactivate the items in the table"), align = "center"),
-  div(h6("Live data streamed from URL : http://ihealth.sepdek.net/"), align = "center"),
+  div(h5("Click the items on the right to activate or deactivate"), align = "center"),
+  div(h6("Live data is streamed from http://ihealth.sepdek.net/"), align = "center"),
   br(),
   div(plotlyOutput("plot"), id='graph'),
   useShinyjs()
