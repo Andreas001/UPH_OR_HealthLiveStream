@@ -1,13 +1,22 @@
-# UPH_OR_HealthLiveStream
+# UPH_Riset operasional_Case 2
+Health livestream / tracker
 
-shiny::runGitHub("jamesadhitthana/UPH_OR_HealthLiveStream") #Copy this into RStudio console to run the app
+Using RGui
 
-**James Adhitthana's iHealth Tracker (Livestream from http://ihealth.sepdek.net/)**
+Library needed :
 
-* Click on the right side of the table to enable/disable viewing a sensor's graph
+shiny
 
-* On top of the graph there are additional functions that the user can interact with
+plotly
 
-Screenshot:
+shinyjs
 
-![Screenshot James iHealth Tracker](https://raw.githubusercontent.com/jamesadhitthana/UPH_OR_HealthLiveStream/master/screenshot%20James%20Adhitthana%20iHealthTracker.png)
+Instructions : 
+
+  Copy & paste in R console : shiny::runGitHub("Andreas001/UPH_RO_Case2")
+
+  Click the items on the right to activate or deactivate in the table
+
+  Hover above to the right of the table to view more options
+
+Credit : Again goes to James https://github.com/jamesadhitthana for his wonderful help
